@@ -1,0 +1,10 @@
+
+	Support class
+	Dependent
+	
+	
+	class Dependent {
+		void method(Connection connection) {
+			
+		}
+	}

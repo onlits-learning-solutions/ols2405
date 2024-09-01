@@ -1,0 +1,42 @@
+
+	DSA
+	Java
+
+
+	OOP including design patterns
+	communication skills
+	
+	Connection connection = DriverManager.getConnection(url);
+	
+	SqlConnection sqlConnection = new SqlConnection(connectionstring);
+	
+	pdf, csv, excel, txt
+	
+	Inner class in java
+	
+	Linear Search
+	Binary Search -	list should be sorted
+	
+	Discuss techinques to create sorted list.
+	
+	If our list is not sorted what will be the effect of binary search.
+	
+	O(log n)
+	
+	2^4=16
+	
+	log(2) 16 = 4
+	
+	
+	1-16	=	4
+	
+	1-100	=	7
+	
+	21
+	
+	1	=	50		1-100	=	(1+100)/2 = 50
+	2	=	25		1-49	=	(1+49)/2  = 25
+	3	=	12		1-24	=	(1+24)/2  = 12
+	4	=	18		13-24	=	(13+24)/2 = 18
+	5	=	21		19-24	=	(19+24)/2 =	21
+	

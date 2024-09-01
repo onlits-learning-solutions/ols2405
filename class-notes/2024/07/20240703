@@ -1,0 +1,61 @@
+
+	Dog is an animal.
+	
+	Type is a Type
+	
+	1. Person Has a _______
+	2. _______ Part of person.
+	
+	Nose		(2)
+	Wallet		(1)
+	
+	
+	List	-	Object
+	Node(s) -	Object
+	
+	Operator Overloading
+		WAP to find the sum of two complex numbers.
+			1. Without operator overloading
+			2. With operator overloading
+				a. member function
+				b. friend function
+		
+		WAP to concatenate two string using operator overloading
+		
+		
+	class Complex {
+		float real;
+		float imaginary;
+	}
+	
+	
+	Database
+		Table
+		View
+		Index
+	
+	
+	MariadbConnection	- Connection -	Employee
+	MariadbStatement	- Statement	 -	Employee
+	
+	System.out.println("Hello!");
+	
+	cout << "Hello!";
+	cin >> a;
+	
+	
+	
+	class Employee {
+		int id;
+		string name;
+		
+		public void save() {
+		   var connection = DriverManager.getConnection(url, user,pass);
+		   var statement = connection.createStatement();
+		   string sql = "";
+		   System.out.println(connection);
+		   System.out.println(statement);
+		}
+	}
+	
+	

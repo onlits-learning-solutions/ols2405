@@ -1,0 +1,10 @@
+ 
+ artefact:	an object that is made by a person
+ archetype: the most typical example of a particular kind of person or   
+ 			thing
+ 			
+ project			=	artefact
+ project template	=	archetype
+ 
+ 
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.3.3&packaging=war&jvmVersion=21&groupId=ols2405&artifactId=invoicing&name=invoicing&description=Invoicing%20Project&packageName=ols2405.invoicing&dependencies=web,thymeleaf,devtools

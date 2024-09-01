@@ -1,0 +1,31 @@
+
+	How is Java platform independent?
+	
+	
+	bytecode - .class
+	
+	The good doctor
+		autism
+		Ampute
+		
+	Checked Exception
+	Unchecked Exception
+	
+	Garbage Collection
+	
+	javac Sum.java
+	java Sum
+	
+	javac Test.java
+	java Test Factorial
+	
+	
+	Reflection
+	
+	int a = 12, b = 24, c;
+	
+	c = a + b
+	
+	Integer i = 12, j = 24, k;
+	
+	k = i + j;

@@ -1,0 +1,111 @@
+
+	java OverloadingVsOverrinding
+	
+	OverloadingVsOverrinding.main();
+	
+	
+	Complex c1, c2, c3;
+	Complex c4 = new Complex(c1);
+	Complex c5 = c2;
+	c3 = c1 + c2;	//Not achievable in java
+	
+	String s1, s3, s3
+	s3 = s1 + s3;
+	
+	int main(void)
+	{
+		new TestClass()->method();
+	}
+	
+	
+	WAP in java that accepts the name of a *class as command-line
+	argument and invokes its only method.
+	
+	*The class referred to here should contain only a static method
+	 that prints a simple message.
+	 
+	 java Program1 Program2
+	 
+	 import java.time.*;
+	 
+	 class Notice {
+	 	String organizationName;
+	 	String address;
+	 	LocalDate date;
+	 	String subject;
+	 	String body
+	 	String issuerName;
+	 	String designation;us
+	 	
+	 	Notice() {}
+	 	
+	 	Notice(String organizationName, address, ...)
+	 	
+	 	//getter & setter methods for all fields;
+	 }
+	 
+	 --------------------------------------------------
+	 
+	 class Resume {
+	 
+	 
+	 	Heading heading;
+	 	String careerObjective;
+	 	ArrayList<Qualification> academicQualification;
+	 	ArrayList<Experience> professionalExperience;
+	 	ArrayList<String> hobbies;
+	 	PersonalDetails personalDetails;
+	 	
+	 	
+	 	class Address {
+	 	String street;
+	 	String city;
+	 	String state;
+	 	String country;
+	 	int pincode;
+	 }
+	 
+	 
+	 class Heading {
+	 	String name;
+	 	Address address;
+	 	String contactNumber;
+	 	String email;
+	 }
+	 
+	 class Qualification{
+	 	String name;
+	 	int year;
+	 	String institute;
+	 	String resultType;
+	 	float result;
+	 }
+	 
+	 class Experience {
+	 	String jobTitle;
+	 	String company;
+	 	LocalDate startDate;
+	 	LocalDate endDate;
+	 	ArrayList<String> responsibilities:
+	 }
+	 	class PersonalDetails {
+	 	String fathersName;
+	 	LocalDate dob;
+	 }
+	 }
+	 
+	 
+	 Scanner scanner = new Scanner(System.in);
+	 
+	 Private sub SaveMenuStripItem_Click(sender As object, e As EventArgs) Handles SaveMenuStripItem.Click
+	 	Dim fileSaveDialog As new FileSaveDialog()
+	 	Dim streamWriter As new StreamWriter("Text.txt")
+	 	
+	 End
+	 
+	 - Sub Procedure
+	 - Function Procedure
+	 - Event Procedure
+	 
+	 Laptop ocsmm01 = new Laptop();
+	 

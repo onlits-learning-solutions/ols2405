@@ -1,0 +1,24 @@
+
+	JVM
+	JRE
+	
+	Authentication Information
+	
+	
+	Class Loader
+	
+	JVM Memory Area
+		Method Area
+		JVM Language Stack
+		Registers
+		Heap
+		
+	Execution Engine
+	
+	java.lang.System
+	java.util.Scanner
+	
+	System.Console
+	
+	
+	Class.forName()
