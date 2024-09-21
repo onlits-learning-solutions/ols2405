@@ -11,9 +11,16 @@
 
 <body class="container mt-3">
     <h1>Members</h1>
-    <table>
+    <table class="table">
         <tr>
+            <th>Id</th>
             <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td th:text="${members[0].id}"></td>
+            <td th:text="${members[0].name}"></td>
+            <td th:text="${members[0].email}"></td>
         </tr>
     </table>
 </body>
