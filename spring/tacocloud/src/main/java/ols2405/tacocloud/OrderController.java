@@ -30,5 +30,3 @@ public class OrderController {
         return "redirect:/";
     }    
 }
-
-//Last page: 49
