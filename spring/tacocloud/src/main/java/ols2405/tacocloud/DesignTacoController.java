@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
-import ols2405.tacocloud.Ingredients.Type;
+import ols2405.tacocloud.Ingredient.Type;
 
 @Slf4j
 @Controller
@@ -23,19 +23,19 @@ import ols2405.tacocloud.Ingredients.Type;
 public class DesignTacoController {
     @GetMapping
     public String showDesignForm(Model model) {
-        List<Ingredients> ingredients = Arrays.asList(
-                new Ingredients("FLTO", "Flour Tortilia", Type.WRAP),
-                new Ingredients("COTO", "Corn Tortilia", Type.WRAP),
-                new Ingredients("GRBF", "Ground", Type.PROTEIN),
-                new Ingredients("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredients("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredients("LETC", "Lettuce", Type.VEGGIES),
-                new Ingredients("CHED", "Cheddar", Type.CHEESE),
-                new Ingredients("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredients("SLSA", "Salsa", Type.SAUCE),
-                new Ingredients("SRCR", "Sour Cream", Type.SAUCE));
+        List<Ingredient> ingredients = Arrays.asList(
+                new Ingredient("FLTO", "Flour Tortilia", Type.WRAP),
+                new Ingredient("COTO", "Corn Tortilia", Type.WRAP),
+                new Ingredient("GRBF", "Ground", Type.PROTEIN),
+                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
+                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
+                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
+                new Ingredient("CHED", "Cheddar", Type.CHEESE),
+                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
+                new Ingredient("SLSA", "Salsa", Type.SAUCE),
+                new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
 
-        Type[] types = Ingredients.Type.values();
+        Type[] types = Ingredient.Type.values();
 
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
@@ -43,7 +43,7 @@ public class DesignTacoController {
         return "design";
     }
 
-    private List<Ingredients> filterByType(List<Ingredients> ingredients, Type type) {
+    private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))

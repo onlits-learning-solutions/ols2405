@@ -8,7 +8,6 @@ int newBook()
     scanf("%d", &book.id);
     printf("Enter book title: ");
     scanf("%s", book.title);
-    printf("hello from book module\n");
     return 0;
 }
 
@@ -21,5 +20,6 @@ BOOK getBookById(int id)
 
 BOOK getBookByTitle(char *title)
 {
-    
+    BOOK book;
+    return book;
 }
