@@ -21,6 +21,7 @@ BOOK getBookById(int id)
     BOOK book;
     FILE *fp;
     fp = fopen("book.csv", "r");
+    
     do
     {
        fscanf(fp, "%d,%[^\n]", &book.id, book.title);
