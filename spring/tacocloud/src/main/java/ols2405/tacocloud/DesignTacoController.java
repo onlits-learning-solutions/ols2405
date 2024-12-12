@@ -11,14 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.extern.slf4j.Slf4j;
-
 import ols2405.tacocloud.Ingredient.Type;
 import ols2405.tacocloud.data.IngredientRepository;
+import ols2405.tacocloud.data.TacoRepository;
 
 @Slf4j
 @Controller
@@ -26,11 +27,24 @@ import ols2405.tacocloud.data.IngredientRepository;
 @SessionAttributes("order")
 
 public class DesignTacoController {
+
     private final IngredientRepository ingredientRepo;
+    private TacoRepository designRepo;
 
     @Autowired
-    public DesignTacoController(IngredientRepository ingredientRepo) {
+    public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository designRepo) {
         this.ingredientRepo = ingredientRepo;
+        this.designRepo = designRepo;
+    }
+
+    @ModelAttribute(name = "order")
+    public Order order() {
+        return new Order();
+    }
+
+    @ModelAttribute(name = "taco")
+    public Taco taco() {
+        return new Taco();
     }
 
     @GetMapping
@@ -55,12 +69,12 @@ public class DesignTacoController {
 
     @PostMapping
     public String processDesign(@Valid Taco design, Errors errors) {
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return "design";
         }
 
-        // Save the taco design...
-        // We'll do this in chapter 3
+        Taco saved = designRepo.save(design);
+        // order.addDesign(saved);                  ??????????????
         log.info("Processing design: " + design);
 
         return "redirect:/orders/current";
