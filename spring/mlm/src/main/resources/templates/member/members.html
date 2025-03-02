@@ -17,10 +17,10 @@
             <th>Name</th>
             <th>Email</th>
         </tr>
-        <tr>
-            <td th:text="${members[0].id}"></td>
-            <td th:text="${members[0].name}"></td>
-            <td th:text="${members[0].email}"></td>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.email}"></td>
         </tr>
     </table>
 </body>

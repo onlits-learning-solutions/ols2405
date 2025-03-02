@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +27,7 @@ import ols2405.tacocloud.data.TacoRepository;
 public class DesignTacoController {
 
     private final IngredientRepository ingredientRepo;
-    private TacoRepository designRepo;
+    private final TacoRepository designRepo;
 
     @Autowired
     public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository designRepo) {
@@ -68,14 +66,14 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(@Valid Taco design, Errors errors) {
-        if (errors.hasErrors()) {
-            return "design";
-        }
-
-        Taco saved = designRepo.save(design);
-        // order.addDesign(saved);                  ??????????????
+    public String processDesign(Taco design, Errors errors, @ModelAttribute Order order) {
+        // if (errors.hasErrors()) {
+        //     return "design";
+        // }
         log.info("Processing design: " + design);
+        log.info("********************************** " + design);
+        Taco saved = designRepo.save(design);
+        // order.addDesign(saved);
 
         return "redirect:/orders/current";
     }
