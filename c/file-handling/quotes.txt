@@ -1,0 +1,3 @@
+Programming is a kill acquired by practice and example rather than books.
+With great power comes great responsibility.
+Every C program is a C++ program but opposite is not true.
