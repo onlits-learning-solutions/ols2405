@@ -6,14 +6,14 @@ int main(int argc, char const *argv[]) // out of scope for Big O
     do
     {
         printf("LIBRARY MANAGEMENT SYSTEM\n");
-        printf("\nMain Menu\n");
+        messagebox("MAIN MENU");
         printf("1. Book Module\n");
         printf("Enter choice[0 to exit]: ");
         scanf("%d", &ch);
         switch (ch)
         {
         case 0:
-            printf("\nbye!\n");
+            messagebox("Bye!");
             return 0;
         case 1:
             bookMenu();

@@ -38,7 +38,7 @@ public class MemberController {
         return "Saved";
     }
 
-    @GetMapping(path = "/edit")
+    @GetMapping(path = "/edit/{id}")
     public String getMemberEdit() {
         return "member/edit";
     }
