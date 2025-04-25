@@ -28,6 +28,7 @@ void displayAllBooks();
 BOOK getBookById(int id);
 BOOK getBookByTitle(char *title);
 void displayBook(BOOK book);
+int getLocationById(int id);
 void editBook(int id);
 
 // --------------- member module ---------------
