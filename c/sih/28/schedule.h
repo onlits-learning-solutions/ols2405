@@ -36,8 +36,10 @@ typedef struct schedule
 } SCHEDULE;
 
 /*-------------------------- schedule_controller ------------------------*/
-int create_subject(SUBJECT subject);
+int create_subject();
+int save_subject(SUBJECT subject);
 SUBJECT read_one_subject(int id);
 SUBJECT *read_all_subjects(void);
 
-// SCHEDULE* generate_schedule(int num_slots);
+/*----------------------------- views ----------------------------------*/
+void new_subject();

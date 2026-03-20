@@ -1,6 +1,12 @@
 #include "schedule.h"
 
-int create_subject(SUBJECT subject)
+int create_subject()
+{
+    new_subject();
+    return 0;
+}
+
+int save_subject(SUBJECT subject)
 {
     MYSQL *connection = mysql_init(NULL);
     char sql[100];
