@@ -4,12 +4,13 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Dotenv\Dotenv;
-use ResumeBuilderVanilla\Controllers\ResumeController;
-use ResumeBuilderVanilla\Core\PostRequest;
-use ResumeBuilderVanilla\Models\Resume;
 
-$dotenv = Dotenv::createUnsafeImmutable(__DIR__);       //? - EGPCS
+
+$dotenv = Dotenv::createImmutable(__DIR__);       //? - EGPCS
 $dotenv->load();
+
+require_once 'bootstrap.php';
+require_once 'route.php';
 
 //TODO: Implement Maintenance Mode
 
@@ -19,18 +20,4 @@ $dotenv->load();
 
 //TODO: Implement Front Controller
 
-$uri = $_SERVER['REQUEST_URI'];
 
-switch ($uri) {
-    case '/dashboard':
-        header('Location:/resources/views/dashboard.php');
-        exit;
-        break;
-    case '/resume/greeting':
-        // $resumeController = new ResumeController();
-        // $resumeController->callGreeting(new PostRequest('Good Morning!'));
-        // $resume = new Resume();
-        break;
-    default:
-        echo 'Page not found!';
-}
