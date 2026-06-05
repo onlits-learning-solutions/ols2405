@@ -17,3 +17,4 @@ public class UserService {
         System.out.println("User registered");
     }
 }
+
