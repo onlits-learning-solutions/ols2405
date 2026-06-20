@@ -30,6 +30,7 @@ class ApplicationContext
         }
         try {
             $reflectionClass = new ReflectionClass($class);
+            // print_r($reflectionClass);
             $componentAttrs = $reflectionClass->getAttributes(Component::class);
 
             if (empty($componentAttrs)) {
@@ -40,25 +41,28 @@ class ApplicationContext
 
             $dependencies = [];
 
-            $autowiredAttrs = $constructor->getAttributes(Autowired::class);
+            if ($constructor) {
 
-            foreach ($constructor->getParameters() as $parameter) {
-                $type = $parameter->getType();
+                $autowiredAttrs = $constructor->getAttributes(Autowired::class);
 
-                if (!$type) {
-                    throw new RuntimeException("Cannot resolve dependency{$parameter->getName()} in $class");
+                foreach ($constructor->getParameters() as $parameter) {
+                    $type = $parameter->getType();
+
+                    if (!$type) {
+                        throw new RuntimeException("Cannot resolve dependency{$parameter->getName()} in $class");
+                    }
+
+                    $dependencyClass = $type->getName();
+
+                    $dependencies[] = $this->createBean($dependencyClass);
+                    // var_dump($dependencies);
                 }
-
-                $dependencyClass = $type->getName();
-
-                $dependencies[] = $this->createBean($dependencyClass);
-                var_dump($dependencies);
             }
 
-            // $instance = $reflectionClass->newInstanceArgs($dependencies);
-    //         $this->beans[$class] = $instance;
+            $instance = $reflectionClass->newInstanceArgs($dependencies);
+            $this->beans[$class] = $instance;
 
-    //         return $instance;
+            return $instance;
         } catch (ReflectionException $e) {
             throw new RuntimeException("Failed to create bean: $class", 0, $e);
         }

@@ -14,8 +14,7 @@ switch ($uri) {
         exit;
         break;
     case '/resume/greeting':
-        $resumeController = new ResumeController();
-        $resumeController->callGreeting(new PostRequest(''));
+        
         break;
     default:
         echo 'Page not found!';

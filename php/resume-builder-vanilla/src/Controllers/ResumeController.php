@@ -5,7 +5,6 @@ namespace ResumeBuilderVanilla\Controllers;
 use ResumeBuilderVanilla\Core\Container\Autowired;
 use ResumeBuilderVanilla\Core\Container\Component;
 use ResumeBuilderVanilla\Core\Services\PostRequest;
-use ResumeBuilderVanilla\Core\Services\Request;
 use ResumeBuilderVanilla\Models\Resume;
 
 #[Component]
@@ -28,7 +27,6 @@ class ResumeController
 
     public function callGreeting()
     {
-        // print_r($_POST);
-        $this->request->greet("Hello! World");
+        $this->request->greet("Hello World! Our DI container is finally working!");
     }
 }

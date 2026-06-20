@@ -10,11 +10,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String name;
-
     private String description;
-
     private String type;
 
     public Integer getId() {
