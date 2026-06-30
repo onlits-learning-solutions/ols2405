@@ -16,12 +16,19 @@ public class Unit {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getUnit() {
         return unit;
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        String str = super.toString();
+        str = str + "; unit=" + unit + "; name=" + name;
+        return str;
     }
 }

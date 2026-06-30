@@ -10,23 +10,21 @@
 </head>
 
 <body class="container mt-3">
-    <header th:insert="layout/header"></header>
-    <div class="float-end"><a href="/product/create" class="btn btn-primary mt-3">Create</a></div>
+    <header th:insert="~{layout/header}"></header>
+    <div class="float-end"><a href="/unit/create" class="btn btn-primary mt-3">Create</a></div>
     <h3 class="mt-3">Products</h3>
     <table class="table">
         <tr>
-            <th>Id</th>
+            <th>Unit</th>
             <th>Name</th>
-            <th>Description</th>
             <th></th>
             <th></th>
         </tr>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.description}"></td>
-            <td><a th:text="Edit" th:href="@{'/product/edit/' + ${product.id}}"></a></td>
-            <td><a th:text="Delete" th:href="@{'/product/delete/' + ${product.id}}"></a></td>
+        <tr th:each="unit : ${units}">
+            <td th:text="${unit.unit}"></td>
+            <td th:text="${unit.name}"></td>
+            <td><a th:text="Edit" th:href="@{'/unit/edit/' + ${unit.unit}}"></a></td>
+            <td><a th:text="Delete" th:href="@{'/unit/delete/' + ${unit.unit}}"></a></td>
         </tr>
     </table>
     <footer th:insert="~{layout/footer}"></footer>

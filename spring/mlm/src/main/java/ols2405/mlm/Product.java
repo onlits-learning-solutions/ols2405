@@ -43,4 +43,13 @@ public class Product {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        String str = "id=" + id;
+        str += "; name=" + name;
+        str += "; description=" + description;
+        str += "; type=" + type;
+        return str;
+    }
 }
