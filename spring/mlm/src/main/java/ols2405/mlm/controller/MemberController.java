@@ -1,4 +1,4 @@
-package ols2405.mlm;
+package ols2405.mlm.controller;
 
 import java.util.Map;
 
@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import ols2405.mlm.model.Member;
+import ols2405.mlm.repository.MemberRepository;
 
 @Controller
 @RequestMapping(path = "/member")

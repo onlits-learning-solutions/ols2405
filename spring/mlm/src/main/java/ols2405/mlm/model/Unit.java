@@ -1,4 +1,4 @@
-package ols2405.mlm;
+package ols2405.mlm.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

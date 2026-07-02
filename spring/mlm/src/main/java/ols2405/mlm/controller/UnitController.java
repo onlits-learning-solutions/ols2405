@@ -1,4 +1,4 @@
-package ols2405.mlm;
+package ols2405.mlm.controller;
 
 import java.util.Map;
 
@@ -14,16 +14,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import ols2405.mlm.form.UnitForm;
+import ols2405.mlm.model.Unit;
+import ols2405.mlm.repository.UnitRepository;
+import ols2405.mlm.service.UnitService;
 
 @Controller
 @RequestMapping(path = "/unit")
 public class UnitController {
     @Autowired
     private UnitRepository unitRepository;
+    
+    private final UnitService unitService;
+    public UnitController(UnitService unitService) {
+        this.unitService = unitService;
+    }
 
     @GetMapping
     public String getAllUnits(Map<String, Object> model) {
-        model.put("units", unitRepository.findAll());
+        model.put("units", unitService.findAll());
         return "unit/units";
     }
 
@@ -34,14 +42,14 @@ public class UnitController {
 
     @PostMapping
     public String addNewUnit(@Valid @ModelAttribute UnitForm unitForm, BindingResult result) {
+        
         if(result.hasErrors()) {
             return "unit/create";
         }
     
-        Unit unit = new Unit();
-        unit.setUnit(unitForm.getUnit());
-        unit.setName(unitForm.getName());
-        unitRepository.save(unit);
+        unitService.createService(unitForm);
+
+        
         return "redirect:/unit";
     }
 

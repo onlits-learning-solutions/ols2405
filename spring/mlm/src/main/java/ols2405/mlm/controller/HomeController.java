@@ -1,4 +1,4 @@
-package ols2405.mlm;
+package ols2405.mlm.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

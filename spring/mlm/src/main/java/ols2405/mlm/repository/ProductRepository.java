@@ -1,6 +1,8 @@
-package ols2405.mlm;
+package ols2405.mlm.repository;
 
 import org.springframework.data.repository.CrudRepository;
+
+import ols2405.mlm.model.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Integer> {
     // This interface will automatically provide CRUD operations for the Product entity

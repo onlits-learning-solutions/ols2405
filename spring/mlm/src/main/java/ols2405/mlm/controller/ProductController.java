@@ -1,4 +1,4 @@
-package ols2405.mlm;
+package ols2405.mlm.controller;
 
 import java.util.Map;
 
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 import ols2405.mlm.form.ProductForm;
+import ols2405.mlm.model.Product;
+import ols2405.mlm.repository.ProductRepository;
 
 @Controller
 @RequestMapping(path = "/product")
