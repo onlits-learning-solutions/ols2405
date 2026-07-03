@@ -10,9 +10,10 @@
 </head>
 
 <body class="container">
-    <header th:insert="layout/header"></header>
+    <header></header>
     <h3 class="mt-3">Home</h3>
     <p>Welcome to our MLM Application.</p>
+    <a href="/user/login" class="btn btn-primary">Log in</a>
 </body>
-<footer th:insert="layout/footer"></footer>
+<footer th:insert="~{layout/footer}"></footer>
 </html>
