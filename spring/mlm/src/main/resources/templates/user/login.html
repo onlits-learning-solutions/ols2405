@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{layout/head :: head('MLM - Login')}"></head>
+
+<body class="container mt-3">
+    <h3 class="mt-3">Login</h3>
+    <p>Please login to continue</p>
+    <form th:action="@{/user/authenticate}" method="post">
+        <label for="" class="form-label">User Id</label>
+        <input type="text" name="userId" id="userId" class="form-control mb-3">
+        <label for="" class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-control mb-3">
+        <button class="btn btn-primary">Log in</button>
+    </form>
+
+    <footer th:replace="~{layout/footer}"></footer>
+</body>
+
+</html>
