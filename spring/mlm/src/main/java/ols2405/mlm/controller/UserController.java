@@ -1,20 +1,24 @@
 package ols2405.mlm.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ols2405.mlm.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+import ols2405.mlm.form.LoginForm;
+import ols2405.mlm.service.UserService;
 
 @Controller
 @RequestMapping(path = "/user")
 public class UserController {
-    private UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping(path = "/login")
@@ -23,8 +27,24 @@ public class UserController {
     }
 
     @PostMapping(path = "/authenticate")
-    public String authenticate() {
+    public String authenticate(@Valid @ModelAttribute LoginForm loginForm, BindingResult result,
+            HttpSession httpSession) {
+        if (result.hasErrors()) {
+            return "user/login";
+        }
 
-        return "";
+        if (userService.authenticate(loginForm)) {
+            httpSession.setAttribute("userId", loginForm.getUserId());
+            return "redirect:/dashboard";
+        } else {
+            return "redirect:/user/login";
+        }
+    }
+
+    @GetMapping(path = "/seedadmin")
+    public String seedAdmin() {
+        userService.seedAdmin();
+        System.out.println("Admin Seeding Successful!");
+        return "redirect:/user/login";
     }
 }

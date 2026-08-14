@@ -1,14 +1,13 @@
-package ols2405.mlm.model;
+package ols2405.mlm.form;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
-@Entity
-public class User {
-    @Id
+public class LoginForm {
+    @NotBlank
     private String userId;
+
+    @NotBlank
     private String password;
-    private String role;
 
     public void setUserId(String userId) {
         this.userId = userId;
@@ -24,17 +23,5 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public boolean isActive() {
-        return true;
     }
 }
