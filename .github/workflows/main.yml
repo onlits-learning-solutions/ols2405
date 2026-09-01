@@ -6,6 +6,8 @@ on:
       - "feature/**"
       - "fix/**"
       - "bugfix/**"
+      - "manishmishraonlits/**"
+      - "mrityunjay9693/**"
 
 jobs:
   move-to-in-progress:
