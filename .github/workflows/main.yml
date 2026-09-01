@@ -1,0 +1,121 @@
+name: Update Project Status
+
+on:
+  push:
+    branches:
+      - "feature/**"
+      - "fix/**"
+      - "bugfix/**"
+
+jobs:
+  move-to-in-progress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extract issue number
+        id: issue
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          ISSUE_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+' | head -1)
+
+          if [ -z "$ISSUE_NUMBER" ]; then
+            echo "No issue number found in branch name."
+            exit 1
+          fi
+
+          echo "number=$ISSUE_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Get issue node ID
+        id: issue_data
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          ISSUE_NUMBER: ${{ steps.issue.outputs.number }}
+        run: |
+          ISSUE_ID=$(gh api graphql \
+            -f query='
+              query($owner:String!, $repo:String!, $number:Int!) {
+                repository(owner:$owner, name:$repo) {
+                  issue(number:$number) {
+                    id
+                  }
+                }
+              }
+            ' \
+            -f owner="${{ github.repository_owner }}" \
+            -f repo="${{ github.event.repository.name }}" \
+            -F number="$ISSUE_NUMBER" \
+            --jq '.data.repository.issue.id')
+
+          echo "issue_id=$ISSUE_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Find project item
+        id: project_item
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          ISSUE_ID: ${{ steps.issue_data.outputs.issue_id }}
+        run: |
+          ITEM_ID=$(gh api graphql \
+            -f query='
+              query($project:ID!) {
+                node(id:$project) {
+                  ... on ProjectV2 {
+                    items(first:100) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ' \
+            -f project="${{ secrets.PROJECT_ID }}" \
+            --jq ".data.node.items.nodes[] |
+              select(.content.id == \"$ISSUE_ID\") |
+              .id")
+
+          if [ -z "$ITEM_ID" ]; then
+            echo "Issue is not in the Project."
+            exit 1
+          fi
+
+          echo "item_id=$ITEM_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Move issue to In Progress
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          ITEM_ID: ${{ steps.project_item.outputs.item_id }}
+        run: |
+          gh api graphql \
+            -f query='
+              mutation(
+                $project:ID!,
+                $item:ID!,
+                $field:ID!,
+                $option:String!
+              ) {
+                updateProjectV2ItemFieldValue(
+                  input: {
+                    projectId: $project
+                    itemId: $item
+                    fieldId: $field
+                    value: {
+                      singleSelectOptionId: $option
+                    }
+                  }
+                ) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }
+            ' \
+            -f project="${{ secrets.PROJECT_ID }}" \
+            -f item="$ITEM_ID" \
+            -f field="${{ secrets.STATUS_FIELD_ID }}" \
+            -f option="${{ secrets.IN_PROGRESS_OPTION_ID }}"
